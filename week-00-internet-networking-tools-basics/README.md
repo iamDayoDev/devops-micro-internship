@@ -12,8 +12,8 @@ Learn how to use ChatGPT effectively to understand technical concepts.
 -   Received a simplified answer from ChatGPT.
 
 ### Screenshot of the ChatGPT response:
-![alt text](<images/gpt res 1.png>)
-![alt text](<images/gpt res 2.png>)
+<img src="images/gpt res 1.png" alt="Three-Tier Architecture" width="600"/>
+<img src="images/gpt res 2.png" alt="Three-Tier Architecture" width="600"/>
 
 ## Task 2: Internet & Networking Explanation
 Given Scenario
@@ -40,7 +40,7 @@ I had to explain how users from anywhere (e.g., USA) can access the website.
 -   Listed technologies used in each layer.
 
 ### Diagram of Three-Tier Architecture
-![alt text](images/3-teir-diagram-week-00.png)
+<img src="images/3-teir-diagram-week-00.png" alt="Three-Tier Architecture" width="600"/>
 
 ### Technologies Used in Each Layer
 -   Frontend: HTML, CSS, JavaScript, React
@@ -68,6 +68,19 @@ The A record is the most common because most servers still use IPv4, and it dire
     -   Visible user details
 
 ### Screenshot of VS Code Setup
-![alt text](images/vs-code-setup.png)
+<img src="images/vs-code-setup.png" alt="VS Code Setup" width="600"/>
 
+### Task 6: LinkedIn Post
+
+### What I Did
+-   Summarized tasks 1–5.
+-   Structured the post into sections.
+-   Added the mandatory credit note.
+-   Published on LinkedIn.
+🔗 LinkedIn Post: [Post](https://www.linkedin.com/posts/aderinto-adedayo_youtube-activity-7401944542846959616-XwiJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADAHPe0BH68dCMpdUU3sKs7q5kNxV7FBDFU)
+
+
+
+
+    
 

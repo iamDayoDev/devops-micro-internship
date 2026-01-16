@@ -80,6 +80,9 @@ The A record is the most common because most servers still use IPv4, and it dire
 -   🔗 LinkedIn Post: [Post](https://www.linkedin.com/posts/aderinto-adedayo_youtube-activity-7401944542846959616-XwiJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADAHPe0BH68dCMpdUU3sKs7q5kNxV7FBDFU)
 
 
+### Folder Structure
+week-00-internet-networking-tools-basics/ ├── README.md └── images/ ├── img1/ ├── img2/ ├── img3/ └── img4/
+
 
 
 

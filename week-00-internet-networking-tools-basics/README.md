@@ -77,10 +77,10 @@ The A record is the most common because most servers still use IPv4, and it dire
 -   Structured the post into sections.
 -   Added the mandatory credit note.
 -   Published on LinkedIn.
-🔗 LinkedIn Post: [Post](https://www.linkedin.com/posts/aderinto-adedayo_youtube-activity-7401944542846959616-XwiJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADAHPe0BH68dCMpdUU3sKs7q5kNxV7FBDFU)
+-   🔗 LinkedIn Post: [Post](https://www.linkedin.com/posts/aderinto-adedayo_youtube-activity-7401944542846959616-XwiJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADAHPe0BH68dCMpdUU3sKs7q5kNxV7FBDFU)
 
 
 
 
-    
+
 

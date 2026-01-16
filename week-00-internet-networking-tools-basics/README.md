@@ -85,10 +85,10 @@ The A record is the most common because most servers still use IPv4, and it dire
 week-00-internet-networking-tools-basics/
 ├── README.md
 └── images/
-├── img1/
-├── img2/
-├── img3/
-└── img4/
+    ├── img1/
+    ├── img2/
+    ├── img3/
+    └── img4/
 ```
 
 

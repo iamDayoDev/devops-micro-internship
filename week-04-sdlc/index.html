@@ -602,14 +602,29 @@
       <div class="footer-bottom">
         <p>© <span id="year"></span> Pravin Mishra. All rights reserved.</p>
         <p>Crafted with <span>cloud</span> excellence by Pravin Mishra</p>
-        <p>Pravin Mishra Portfolio v1.0 — Deployed on <03 Tue 2026> — By <Student Name>Aderinto Adedayo</Student> From Group 4</p>
+        <p>Pravin Mishra Portfolio v1.0 — Deployed on <span id="deployDate"></span> — By <Student Name>Aderinto Adedayo</Student> From Group 4</p>
+          <!-- <div id="deployment-info">
+  <p>Last Deployment: <span id="deployment-date">Loading...</span></p> -->
+</div>
       </div>
 
     </div>
   </footer>
 
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const dateElement = document.getElementById("deployDate");
+            const now = new Date();
 
+            const options = { day: '2-digit', month: 'short', year: 'numeric' };
+            let formattedDate = new Intl.DateTimeFormat('en-GB', options).format(now);
+            
+            // Ensures format is "03 Feb 2026"
+            dateElement.textContent = formattedDate.replace(',', '');
+        });
+    </script>
 
 </body>
+
 
 </html>

@@ -40,3 +40,27 @@ Add this line (example):
 ```
 
 ✅ This proof must be visible in your browser screenshot submission.
+
+## Dynamic Deployment Date Feature
+
+I have also added a dynamic deployment date feature to the footer. You can customize it as follows:
+
+```html
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const dateElement = document.getElementById("deployDate");
+            const now = new Date();
+
+            const options = { day: '2-digit', month: 'short', year: 'numeric' };
+            let formattedDate = new Intl.DateTimeFormat('en-GB', options).format(now);
+            
+            // Ensures format is "03 Feb 2026"
+            dateElement.textContent = formattedDate.replace(',', '');
+        });
+    </script>
+```
+## How It Works:
+- The script waits for the DOM to load.
+- It fetches the current date and formats it to "DD MMM YYYY".
+- The formatted date is inserted into the `<span id="deployDate"></span>` in the footer.
+

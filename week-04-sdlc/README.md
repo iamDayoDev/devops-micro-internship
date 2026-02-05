@@ -1,45 +1,97 @@
-# DMI Portfolio Website (Static HTML/CSS)
+## Week 4: Software Development Life Cycle (SDLC) & Deployment
 
-This repository contains a clean, professional-looking **static portfolio website** used in **DevOps Micro Internship (DMI)** Week 1 to practice:
-- Linux basics
-- Nginx hosting
-- Deployment proof / ownership
-- Production-style checks
+This week, I focused on enhancing the footer of my portfolio website and implementing a dynamic deployment date feature. I also polished the UI for better readability and accessibility.
 
-✅ Students deploy this website on an Ubuntu VM using Nginx and keep it live for 24 hours.
+This is part of the DevOps Micro-Internship program, where I am learning about the software development life cycle and deployment processes. In this week, I completed the following tasks:
 
----
+1. Created a Jira Account and Set Up My Professional Profile
 
-## Who is this for?
-- DMI students (beginner → intermediate)
-- Anyone learning how to host a static site with Nginx on Linux
+2. Created an Epic in Jira
 
----
+3. Created a Space (Project) in Jira and Added Issues
+ - S1 — Update site header text
+ - S2 — Primary button color refresh
+ - S3 — Improve hero subtitle copy
+ - S4 — Footer with version & date
+ - S5 — Add “Contact / About” section
+ - S6 — Add “Join DMI” call-to-action
 
-## What you will build
-A portfolio-style website hosted on:
-- **Ubuntu VM**
-- **Nginx**
-- Accessible via: `http://<public-ip>`
+4. Added Subtask to S1 & S4 of the Issues in Jira
 
----
+5. I added Descriptions, Acceptance Criteria, Labels and Story Points to the Issues in Jira
 
-## Mandatory Ownership Proof (DMI Rule)
-Before you deploy, you MUST edit the footer and add your details:
+6. Created a Sprint in Jira, Added Issues to the Sprint and Started the Sprint
 
-Original:
+6. Completed the Issues in the Sprint and Closed the Sprint
 
-```html
-<p>Crafted with <span>cloud</span> excellence by Pravin Mishra</p>
+7. Use Filters to View Stories + Subtasks + Status
+
+8. Open Burndown Report (for later tracking)
+
+### Assignment 3: Run a 5-Day Mini-Sprint in Jira and Ship an Increment
+
+1. Create a Story in Jira
+
+2. Define Sprint Goal
+Write a clear sprint goal that describes the value you will deliver by the end of the sprint.
+
+3. Created Subtasks Under the Story
+Create 5 subtasks (one per day). Use these titles exactly:
+
+- Day 1 — Implement footer & deploy
+
+- Day 2 — Make deploy date dynamic
+
+- Day 3 — Polish & accessibility
+
+- Day 4 — Provenance / health signal
+
+- Day 5 — Demo + retro + burndown
+
+### Task 1 — Setup Sprint in Jira (Sprint 1) and Start It
+
+- Goal: Put the story into Sprint 1, define sprint goal, and start sprint.
+
 ```
+Notes:
 
-Add this line (example):
+Open your Jira project for Pravin Mishra Portfolio Website – <YourName>
 
-```html
-<p><strong>Deployed by:</strong> DMI Cohort 2 | Rahul Sharma | Group 4 | Week 1 | 16-01-2026</p>
+Go to Backlog → Create sprint → Sprint 1
+
+Add your story to Sprint 1
+
+Set Sprint Goal (paste from above)
+
+Click Start sprint
+
 ```
+### Task 2 — Day 1: Implement Footer + Commit + Deploy to EC2
 
-✅ This proof must be visible in your browser screenshot submission.
+- Goal: Add footer text to the website and make it visible on EC2.
+
+Notes:
+
+Clone the portfolio template repo (or use your existing local clone):
+
+git clone https://github.com/pravinmishraaws/Pravin-Mishra-Portfolio-Template.git
+cd Pravin-Mishra-Portfolio-Template
+Create a feature branch:
+
+```
+git branch feature/footer-v1
+git switch feature/footer-v1
+```
+- Add footer to the website:
+
+- Locate the footer section in the template (often index.html and other pages)
+
+Add this text (replace <Student Name> with your name):
+Pravin Mishra Portfolio v1.0 — Deployed on <DD Mon YYYY> — By <Student Name>
+
+- Move subtask Day 1 → In Progress → Done
+
+- Add Daily Scrum comment to the Story
 
 
 ## Task 3 — Day 2: Make Deploy Date Dynamic 

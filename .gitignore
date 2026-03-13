@@ -1,1 +1,13 @@
 *.pem
+
+# Ignore terraform generated files 
+terraform/
+terraform/*
+
+.terraform
+
+.*.lock.hcl
+
+*.tfstate
+
+

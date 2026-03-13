@@ -6,7 +6,7 @@
 .*.lock.hcl
 *.tfstate
 
-# Ignore settings.local.json
+# Ignore settings.local.jsonn
 .claude/settings.local.json
 
 

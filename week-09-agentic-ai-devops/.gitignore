@@ -1,0 +1,12 @@
+# Terraform state — contains sensitive resource metadata and AWS account details
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+
+# Local variable overrides may contain secrets
+terraform/*.auto.tfvars
+terraform/terraform.tfvars
+
+# Claude local settings contain AWS credentials
+.claude/settings.local.json

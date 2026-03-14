@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "terraform": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-v", "C:/Users/USER/Desktop/devops-micro-internship/week-09-agentic-ai-devops/terraform:/workspace",
+        "-w", "/workspace",
+        "hashicorp/terraform-mcp-server"
+      ]
+    },
+    "aws": {
+      "command": "uvx",
+      "args": ["awslabs.aws-api-mcp-server@latest"],
+      "env": {
+        "AWS_PROFILE": "shared",
+        "AWS_REGION": "af-south-1"
+      }
+    }
+  }
+}

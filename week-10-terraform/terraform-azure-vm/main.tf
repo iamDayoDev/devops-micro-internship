@@ -12,7 +12,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "terraform-vm-rg"
+  name     = "Aderinto-terraform-vm-rg"
   location = "South Africa North"
 }
 
@@ -52,7 +52,7 @@ resource "azurerm_network_interface" "nic" {
 }
 
 resource "azurerm_linux_virtual_machine" "vm" {
-  name                            = "terraform-azure-vm"
+  name                            = "Aderinto-terraform-azure-vm"
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = azurerm_resource_group.rg.location
   size                            = "Standard_B2ats_v2"

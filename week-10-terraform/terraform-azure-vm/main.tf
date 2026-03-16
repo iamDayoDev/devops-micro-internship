@@ -52,12 +52,12 @@ resource "azurerm_network_interface" "nic" {
 }
 
 resource "azurerm_linux_virtual_machine" "vm" {
-  name                            = "terraform-ubuntu-vm"
+  name                            = "terraform-azure-vm"
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = azurerm_resource_group.rg.location
   size                            = "Standard_B2ats_v2"
   admin_username                  = "azureuser"
-  admin_password                  = "Mary@331021!"
+  admin_password                  = "Aderinto@1900!"
   disable_password_authentication = false
 
   network_interface_ids = [

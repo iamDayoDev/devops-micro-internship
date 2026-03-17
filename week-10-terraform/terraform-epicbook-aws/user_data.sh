@@ -9,3 +9,5 @@ sudo apt install nodejs npm git nginx mysql-client -y
 # Enable and start nginx
 sudo systemctl enable nginx
 sudo systemctl start nginx
+
+sudo npm install -g pm2

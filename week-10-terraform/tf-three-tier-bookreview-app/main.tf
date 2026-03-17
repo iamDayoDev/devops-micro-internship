@@ -10,6 +10,7 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   region = var.aws_region
+  profile = "shared"
 }
 
 module "vpc" {

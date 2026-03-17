@@ -15,7 +15,8 @@ output "public_alb_dns" {
   value       = module.alb.public_alb_dns
 }
 
-output "private_alb_dns" {
+output "internal_alb_dns" {
   description = "DNS name of the private Application Load Balancer"
-  value       = module.alb.private_alb_dns
+  value       = module.alb.internal_alb_dns
 }
+

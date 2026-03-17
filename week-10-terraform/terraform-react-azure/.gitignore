@@ -3,6 +3,8 @@
 *.tfstate.backup
 .terraform/
 .terraform.lock.hcl
+.terraform.lock.hcl.backup
+.terraform.lock.hcl.info
 
 # Ignore crash logs
 crash.log

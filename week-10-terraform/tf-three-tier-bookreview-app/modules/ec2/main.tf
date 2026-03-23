@@ -4,6 +4,7 @@ resource "aws_instance" "web_server" {
   vpc_security_group_ids = [var.web_sg_id]
   key_name               = var.keyname
   subnet_id              = var.web_subnet_1_id
+  user_data             = file("${path.root}/scripts/web_userdata.sh")
 
   associate_public_ip_address = true
 
@@ -18,6 +19,7 @@ resource "aws_instance" "app_server" {
   vpc_security_group_ids = [var.app_sg_id]
   key_name               = var.keyname
   subnet_id              = var.app_subnet_1_id
+  user_data             = file("${path.root}/scripts/app_userdata.sh")
 
   associate_public_ip_address = false
 

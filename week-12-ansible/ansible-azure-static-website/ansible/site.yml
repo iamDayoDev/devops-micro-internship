@@ -1,0 +1,35 @@
+- name: Install and Start Nginx Web Server
+  hosts: web
+  become: true
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Start and Enable Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+- name: Deploy Static Website
+  hosts: web
+  become: true
+  tasks:
+    - name: Copy website content to web server root
+      copy:
+        src: "src/index.html"
+        dest: "/var/www/html/"
+        owner: www-data
+        group: www-data
+        mode: "0755"
+
+    - name: Restart Nginx to apply changes
+      service:
+        name: nginx
+        state: restarted
+
+
+    

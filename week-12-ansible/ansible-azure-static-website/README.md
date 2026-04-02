@@ -42,17 +42,13 @@ ansible-azure-static-website/
 │   ├── main.tf              # Primary infrastructure resources
 │   ├── variables.tf         # Input variables (defaults)
 │   ├── outputs.tf           # Output values (public IP)
-│   ├── providers.tf         # Azure provider configuration
-│   ├── terraform.tfstate    # State file (current infrastructure)
-│   └── terraform.tfstate.backup  # State backup
+│   └── providers.tf         # Azure provider configuration 
 └── ansible/                  # Ansible playbooks & inventory
     ├── site.yml             # Main playbook (install & deploy)
     ├── inventory.ini        # Host inventory
     └── src/
         └── index.html       # Static website content
 ```
-
----
 
 ## Prerequisites
 
@@ -82,8 +78,6 @@ az account set --subscription "<SUBSCRIPTION_ID>"
 # Verify SSH key exists
 ls ~/.ssh/id_ed25519.pub
 ```
-
----
 
 ## Configuration
 

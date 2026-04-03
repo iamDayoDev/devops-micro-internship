@@ -1,0 +1,23 @@
+---
+- name: Update apt cache and upgrade all packages
+  apt:
+    update_cache: yes
+    upgrade: dist
+  
+- name: Install baseline packages
+  apt:
+    name:
+      - git
+      - curl
+      - unzip
+      - software-properties-common
+    state: present
+
+- name: Disable root SSH login
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#?PermitRootLogin'
+    line: 'PermitRootLogin no'
+    state: present
+  notify: Restart SSH
+  when: ssh_hardening | default(true)

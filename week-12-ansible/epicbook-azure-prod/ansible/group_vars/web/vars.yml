@@ -1,0 +1,30 @@
+---
+app_repo: https://github.com/pravinmishraaws/theepicbook.git
+
+app_dest: /var/www/epicbook
+
+app_user: azureuser
+
+nginx_port: 80
+
+server_name: 102.133.191.91
+
+backend_host: 127.0.0.1
+
+backend_port: 8080
+
+# Database variables (from vault)
+db_host: "{{ vault_db_host }}"
+db_user: "{{ vault_db_user }}"
+db_name: "{{ vault_db_name }}"
+db_port: "{{ vault_db_port }}"
+db_password: "{{ vault_db_password }}"
+
+db_dump_files:
+  - "BuyTheBook_Schema.sql"
+  - "author_seed.sql"
+  - "books_seed.sql"
+
+app_start_file: "server.js"
+
+NODE_ENV: "development"

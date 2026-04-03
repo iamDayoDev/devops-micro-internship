@@ -1,0 +1,99 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    upgrade: dist
+  become: true
+
+- name: Install required packages
+  apt:
+    name:
+      - nodejs
+      - npm
+      - mysql-client
+      - python3-pymysql
+    state: present
+  become: true
+
+- name: Create application directory
+  file:
+    path: "{{ app_dest }}"
+    state: directory
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: "0755"
+  become: true
+
+- name: Clone EpicBook repository
+  git:
+    repo: "{{ app_repo }}"
+    dest: "{{ app_dest }}"
+    version: main
+    force: yes
+    update: yes
+  become: true
+  become_user: "{{ app_user }}"
+
+- name: Install app dependencies
+  npm:
+    path: "{{ app_dest }}"
+  become: true
+  become_user: "{{ app_user }}"
+
+- name: Install PM2 globally
+  npm:
+    name: pm2
+    global: yes
+    state: present
+  become: true
+
+- name: Create bookstore database on Azure MySQL
+  community.mysql.mysql_db:
+    name: "{{ db_name }}"
+    state: present
+    login_host: "{{ db_host }}"
+    login_user: "{{ db_user }}"
+    login_password: "{{ db_password }}"
+    ca_cert: /etc/ssl/certs/ca-certificates.crt
+  become: true
+
+- name: Import SQL dumps into Azure MySQL
+  community.mysql.mysql_db:
+    name: "{{ db_name }}"
+    login_host: "{{ db_host }}"
+    login_user: "{{ db_user }}"
+    login_password: "{{ db_password }}"
+    state: import
+    target: "{{ app_dest }}/db/{{ item }}"
+    ca_cert: /etc/ssl/certs/ca-certificates.crt
+  loop: "{{ db_dump_files }}"
+  become: true
+  ignore_errors: true
+  when: db_dump_files is defined
+
+- name: Create config.json with database variables
+  template:
+    src: config.json.j2
+    dest: "{{ app_dest }}/config/config.json"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: "0644"
+    force: yes
+  become: true
+  become_user: "{{ app_user }}"
+
+- name: Start app with PM2
+  command: pm2 start {{ app_start_file }} --name epicbook
+  args:
+    chdir: "{{ app_dest }}"
+  environment:
+    NODE_ENV: "{{ NODE_ENV }}"
+  become: true
+  become_user: "{{ app_user }}"
+  failed_when: false
+  changed_when: true
+
+- name: Save PM2 process list
+  command: pm2 save
+  become: true
+  become_user: "{{ app_user }}"

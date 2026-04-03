@@ -2,20 +2,17 @@
 - name: Prepare system (common)
   hosts: web
   become: true
-  gather_timeout: 30
   roles:
     - common
  
 - name: Install and configure Nginx
   hosts: web
   become: true
-  gather_timeout: 30
   roles:
     - nginx
  
 - name: Deploy EpicBook app
   hosts: web
   become: true
-  gather_timeout: 30
   roles:
     - epicbook

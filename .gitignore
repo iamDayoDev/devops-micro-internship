@@ -6,6 +6,10 @@
 .*.lock.hcl
 *.tfstate
 
+.tfvars
+*.tfvars
+*.tfvars.json
+
 # Ignore settings.local.jsonn
 .claude/settings.local.json
 

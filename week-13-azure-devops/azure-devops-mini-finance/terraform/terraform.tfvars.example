@@ -1,0 +1,21 @@
+admin_username = "azureuser"
+admin_password = "ChangeMe123!"
+
+location            = "South Africa North"
+resource_group_name = "mini-finance-rg"
+vm_name             = "mini-finance-vm"
+
+vnet_name               = "mini-finance-vnet"
+vnet_address_space      = ["10.0.0.0/16"]
+subnet_name             = "mini-finance-subnet"
+subnet_address_prefixes = ["10.0.1.0/24"]
+
+nsg_name                    = "mini-finance-nsg"
+public_ip_name              = "mini-finance-pip"
+public_ip_allocation_method = "Static"
+public_ip_sku               = "Standard"
+nic_name                    = "mini-finance-nic"
+nic_ip_configuration_name   = "internal"
+
+vm_size                      = "Standard_D2s_v3"
+os_disk_storage_account_type = "Standard_LRS"

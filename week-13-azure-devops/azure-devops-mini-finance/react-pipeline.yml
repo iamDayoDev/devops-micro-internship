@@ -1,0 +1,114 @@
+trigger:
+  - main
+
+pool:
+  name: "linux_agent_pool"
+
+variables:
+  sshService: 'ssh-react-app-vm'
+  webRoot: '/var/www/html'
+  artifactName: 'react-build'
+
+stages:
+  # Stage 1: Build
+  - stage: BuildReactApp
+    displayName: 'Build React App'
+    jobs:
+      - job: Build
+        steps:
+          - checkout: self
+
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '20.x'
+            displayName: 'Install Node.js'
+
+          - script: npm install
+            displayName: 'Install dependencies'
+
+          - script: npm run build
+            displayName: 'Build the app'
+
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathToPublish: 'build'
+              artifactName: '$(artifactName)'
+            displayName: 'Publish Build Artifact'
+
+  # Stage 2: Test
+  - stage: TestReactApp
+    displayName: 'Run Tests'
+    dependsOn: BuildReactApp
+    condition: succeeded()
+    jobs:
+      - job: Test
+        steps:
+          - checkout: self
+
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '20.x'
+            displayName: 'Install Node.js'
+
+          - script: npm install
+            displayName: 'Install dependencies'
+
+          - script: npm run test tests -- --watchAll=false
+            displayName: 'Run React Tests'
+
+  # Stage 3: Deploy
+  - stage: DeployToVM
+    displayName: 'Deploy to Ubuntu VM with NGINX'
+    dependsOn: TestReactApp
+    condition: succeeded()
+    jobs:
+      - job: Deploy
+        steps:
+          - task: DownloadBuildArtifacts@0
+            inputs:
+              buildType: 'current'
+              artifactName: '$(artifactName)'
+              downloadPath: '$(Pipeline.Workspace)'
+            displayName: 'Download Build Artifact'
+
+          - task: SSH@0
+            inputs:
+              sshEndpoint: '$(sshService)'
+              runOptions: 'inline'
+              inline: |
+                sudo mkdir -p /var/www/html
+                sudo chown -R $(whoami):$(whoami) /var/www/html
+                sudo chmod -R 755 /var/www/html
+            displayName: 'Pre-grant write permissions to web root'
+
+          - task: CopyFilesOverSSH@0
+            inputs:
+              sshEndpoint: '$(sshService)'
+              sourceFolder: '$(Pipeline.Workspace)/$(artifactName)'
+              contents: '**'
+              targetFolder: '$(webRoot)'
+            displayName: 'Copy Files to NGINX Web Root'
+
+          - task: SSH@0
+            inputs:
+              sshEndpoint: '$(sshService)'
+              runOptions: 'inline'
+              inline: |
+                echo 'Configuring NGINX for React app...'
+                echo 'server {
+                    listen 80;
+                    server_name _;
+                    root /var/www/html;
+                    index index.html;
+
+                    location / {
+                        try_files $uri /index.html;
+                    }
+
+                    error_page 404 /index.html;
+                }' | sudo tee /etc/nginx/sites-available/default > /dev/null
+
+                sudo chown -R www-data:www-data /var/www/html
+                sudo chmod -R 755 /var/www/html
+                sudo systemctl restart nginx
+            displayName: 'Configure and Restart NGINX'

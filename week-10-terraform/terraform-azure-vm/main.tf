@@ -56,8 +56,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = azurerm_resource_group.rg.location
   size                            = "Standard_B2ats_v2"
-  admin_username                  = "azureuser"
-  admin_password                  = "Aderinto@1900!"
+  admin_username                  = "adedayo"
+  admin_password                  = "Azure123!"
   disable_password_authentication = false
 
   network_interface_ids = [

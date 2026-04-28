@@ -1,0 +1,19 @@
+FROM nginx:alpine
+
+WORKDIR /app
+
+# Single-stage build: install Node.js in the same image used to serve the app.
+RUN apk add --no-cache nodejs npm
+
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+
+RUN npm run build && \
+    rm -rf /usr/share/nginx/html/* && \
+    cp -r build/. /usr/share/nginx/html/
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
